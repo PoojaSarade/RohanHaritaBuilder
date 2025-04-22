@@ -1,0 +1,1076 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+ * {
+    box-sizing: border-box;
+    
+  } 
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+  max-width: 100%;
+  }
+.slider-container {
+    width: 100%;
+    max-width: 2000px;
+    /* height: 550px; */
+    height:910px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    width: 1200%; /* Since we have 12 images */
+    animation: slide 24s infinite;
+}
+
+.slide {
+    width: 100vw;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    /* height: 550px; */
+    height:910px;
+    object-fit: cover;
+}
+
+/* Keyframes for sliding effect */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    8.33% { transform: translateX(-100vw); }
+    16.66% { transform: translateX(-200vw); }
+    25% { transform: translateX(-300vw); }
+    33.33% { transform: translateX(-400vw); }
+    41.66% { transform: translateX(-500vw); }
+    50% { transform: translateX(-600vw); }
+    58.33% { transform: translateX(-700vw); }
+    66.66% { transform: translateX(-800vw); }
+    75% { transform: translateX(-900vw); }
+    83.33% { transform: translateX(-1000vw); }
+    91.66% { transform: translateX(-1100vw); }
+    100% { transform: translateX(0); }
+}
+
+/******************************************/
+
+
+
+/* Rohan Builders text styling */
+.right {
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-right: 95px;
+   
+}
+ 
+ 
+.containerr {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.left-section {
+    flex: 1;
+    text-align: left;
+}
+
+.titlee {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 60px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 24px;
+    padding-left: 50px;
+    margin: 0;
+}
+
+.right-section {
+    flex: 2;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    padding: 0 20px;
+}
+
+.info-section {
+    display: flex;
+    margin-top: 40px;
+    align-items: flex-start;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+}
+
+.info-text {
+    flex: 1;
+}
+
+.qr-codes {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.qr-code img {
+    width: 120px;
+    height: 120px;
+}
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.whatsapp-icon img {
+    width: 50px;
+}
+
+  .image-grid {
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 50px;
+    max-width: 1200px;
+    width: 100%;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    padding-top: 100px;
+    margin: 0 auto; /* Centers the grid horizontally */
+    padding-left: 100px; /* Remove the left padding */
+    padding-right: 0; /* Remove the right padding */ 
+
+}
+
+.grid-item {
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    width: 350px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    position: relative;
+}
+
+
+/*****************************************************************************************/
+
+.title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 5px 10px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.arrow {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+   
+}
+
+
+
+.form-container {
+
+    padding: 30px;
+    width: 1060px;
+    max-width: 100%; 
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 50px;
+    margin: 0 auto; 
+    padding-left: 30px; 
+    padding-right: 30px;
+}
+
+.form-header h2 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-header p {
+    font-size: 14px;
+    color: #555;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Adds spacing between rows */
+    margin-top: 15px;
+}
+
+.input-row {
+    display: flex;
+    gap: 15px; /* Adds spacing between inputs */
+}
+
+input, select, button {
+    flex: 1; /* Makes all fields equal width */
+    padding: 12px;
+    font-size: 22px;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 60px;
+}
+
+button {
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    font-size: 19px;
+}
+
+
+
+.brochure-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.brochure-container h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.download-btn {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+/* Home Guide Section */
+.home-guide-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 50px auto; 
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+   
+}
+
+/* Text Content */
+.guide-content {
+    width: 55%;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 26px;
+    color: #333;
+    /* line-height: 1.6; */
+      text-indent: 50px; 
+     text-align: justify; 
+
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+    padding-left: 22px;
+}
+
+/* Image Container */
+.guide-image {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.guide-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 300px;
+    height: 60px;
+    padding: 25px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-links img {
+    width: 50px;
+    height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    /* Navigation adjustments */
+    /* nav {
+      padding: 10px;
+    }
+    
+    .hamburger img {
+      width: 30px;
+      height: 30px;
+      padding-left: 5px;
+    } */
+    
+    .right {
+      /* font-size: 20px; */
+      padding-right: 1000px;
+      height: 20px;
+      width: 10px;
+    }
+    
+    /* Slider adjustments */
+    .slider-container {
+      height: 300px;
+    }
+    
+    .slide img {
+      height: 300px;
+    }
+    
+    /* Container layout adjustments */
+    .containerr {
+      flex-direction: column;
+      padding: 15px;
+    }
+    
+    .left-section {
+      text-align: center;
+      padding: 10px;
+    }
+    
+    .titlee {
+      font-size: 28px;
+      padding-left: 0;
+      text-align: center;
+    }
+    
+    .right-section {
+      padding: 10px;
+      text-align: justify;
+    }
+    
+    .jan {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    
+    /* Info section adjustments */
+    .info {
+      flex-direction: column;
+      padding-left: 0;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .icon {
+      margin-bottom: 10px;
+    }
+    
+    .qr-code {
+      padding: 10px;
+      text-indent: 0;
+    }
+    
+    /* Grid layout adjustments */
+    .image-grid {
+      grid-template-columns: 1fr;
+      padding: 30px;
+      gap: 20px;
+    }
+    
+    .grid-item {
+      height: 200px;
+    }
+    
+    /* Form container adjustments */
+    .containerarm {
+      width: 100%;
+      height: auto;
+    }
+    
+    .form-container {
+      padding: 20px;
+      width: 100%;
+    }
+    
+    .input-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    /* Home guide section adjustments */
+    .home-guide-section {
+      flex-direction: column;
+      padding: 20px;
+      margin: 30px 15px;
+    }
+    
+    .guide-content {
+      width: 100%;
+    }
+    
+    .guide-image {
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    /* Footer adjustments */
+    .footer-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .social-links {
+      margin-top: 15px;
+      gap:1px;
+    }
+    
+    .social-links span {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Additional responsiveness for extra small screens */
+  @media screen and (max-width: 480px) {
+    .titlee {
+      font-size: 30px;
+    }
+    
+    .subtitle {
+      font-size: 24px;
+    }
+    
+    p {
+      font-size: 15px;
+      text-indent: 20px;
+    }
+    
+    .slider-container {
+      height: 250px;
+    }
+    
+    .slide img {
+      height: 250px;
+    }
+    
+    .grid-item {
+      height: 300px;
+    }
+    
+    .title {
+      font-size: 18px;
+    }
+    
+    .guide-image img {
+      width: 90%;
+    }
+    
+    .whatsapp-icon {
+      bottom: 10px;
+      left: 10px;
+    }
+    
+    .whatsapp-icon img {
+      width: 40px;
+    }
+  }
+
+
+ /******************************floor plan **************************/
+
+
+
+.containeramam {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.button-containeram {
+    margin-bottom: 20px;
+}
+
+.image-buttonam {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #908C8C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.image-buttonam:hover {
+    background-color: black;
+}
+
+.image-displayam {
+    display: none; /* Hide the image container initially */
+}
+
+#displayedam-image {
+    max-width: 100%;
+    height: 700px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/**************************************Amentities****************/
+/* Modal Styling */
+.csModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.5); */
+    z-index: 1000;
+}
+
+.csModal__content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.csModal__body {
+    text-align: left;
+}
+
+/* Container and Grid */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gridParent {
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+}
+
+.gridWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .gridWrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Amenities Title */
+.contentTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color:black;
+}
+
+/* Feature Block */
+.addedFeaturesBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Icon Background */
+.featuresIconBg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Feature Icons */
+.addedFeatures--img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Feature Text */
+.addedFeatures--text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Close Button */
+.csModal .blackOut {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+}
+
+
+
+/***********************ARCHITECT*********************//* Architect's Note Styling */
+.architect-container {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin: auto;
+    gap: 40px; /* Adjust spacing */
+}
+
+.architect-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.architect-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.architect-line {
+    width: 40px;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0;
+}
+
+.architect-img {
+    width: 60px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%;
+}
+
+.architect-right {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.architect-text {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px;
+    padding-top:30px;
+}
+
+/*************************LOCATION*****************************/
+/* Container for layout */
+.csModal__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #444; /* Adjust to match your design */
+    padding: 20px;
+    color: white;
+}
+
+.location-order {
+    width: 100%;
+    padding-left: 40px;
+    background: #5F5F5F;
+}
+
+.detail-header {
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    color: wheat;
+}
+
+.detail-content {
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+}
+
+.locationBlock {
+    width: 55%;
+}
+
+.locationBlock iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 10px;
+}
+
+
+
+/******************************************************VIDEOS***************************/
+
+
+/* Modal Background */
+.csModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.csModal__content {
+    max-width: 80%;
+    padding: 20px;
+    background: transparent;
+}
+
+.gridWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Video Thumbnails */
+.hoverTile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.hoverTile:hover {
+    transform: scale(1.05);
+}
+
+.hoverTile__img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Overlay with Title and Play Button */
+.hoverTile::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hoverTile::after {
+    content: url('https://upload.wikimedia.org/wikipedia/commons/7/75/YouTube_social_white_red.png');
+    position: absolute;
+    width: 50px;
+    height: 35px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gridWrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .gridWrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+    /* ////////////////////////////////////////////////FOORPLAN> */
+    /* Modal container styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* Modal content */
+.modal-content {
+    position: relative;
+    margin: 50px auto;
+    max-width: 80%;
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Close button */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1001;
+}
+
+.close-button:hover {
+    color: #ccc;
+}
+
+/* Button container */
+.floor-plan-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.floor-plan-button {
+    padding: 10px 20px;
+    background-color: #aaa;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.floor-plan-button.active {
+    background-color: #333;
+}
+
+.floor-plan-button:hover {
+    background-color: #888;
+}
+
+/* Floor plan images */
+.floor-plan-images {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floor-plan-image {
+    display: none;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.floor-plan-image.active {
+    display: block;
+}
+
+/* Floor plan title */
+.floor-plan-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Scrollbar styling */
+.modal::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+    }
+    
+    .floor-plan-buttons {
+        gap: 5px;
+    }
+    
+    .floor-plan-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+/* ///////////////////////////////////////////////////// */
+
+.image-buttonam.active {
+    background-color: #333; 
+    color: white;
+}
+
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px 30px;
+    background: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.logo-container {
+    text-align: right;
+}
+
+.logo-image {
+    height: 60px;
+    max-width: 600px;
+    width: auto;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .navigation {
+        padding: 10px 15px;
+    }
+    
+    .logo-image {
+        height: 40px;
+        max-width: 80%;
+    }
+}
+
+/* For very small screens */
+@media screen and (max-width: 480px) {
+    .logo-image {
+        height: 35px;
+        max-width: 90%;
+    }
+}
+
+

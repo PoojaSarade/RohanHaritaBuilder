@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harita Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Main Image Gallery */
+        .main-gallery-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+        }
+        
+        .main-gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        /* Navigation Arrows */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 5;
+            transition: background-color 0.3s ease;
+        }
+        
+        .gallery-nav:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .gallery-prev {
+            left: 0;
+        }
+        
+        .gallery-next {
+            right: 0;
+        }
+        
+        /* Thumbnail Navigation */
+        .thumbnail-container {
+            position: relative;
+            width: 100%;
+            background-color: #333;
+            padding: 60px 60px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .thumbnail-slider {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .thumbnail-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .thumbnail {
+            flex: 0 0 auto;
+            width: 210px;
+            height: 120px;
+            margin: 0 5px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        
+        .thumbnail.active {
+            border-color: #00a8e8;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnail-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 5;
+        }
+        
+        .thumbnail-prev {
+            left: 10px;
+        }
+        
+        .thumbnail-next {
+            right: 10px;
+        }
+        
+        /* Modal Styles */
+        .csModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        
+        .csModal.active {
+            display: block;
+        }
+        
+        .csModal__content {
+            height: 100%;
+        }
+        
+        .csModal__body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .galleryCarousalWrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallerySlide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallerySlide.active {
+            opacity: 1;
+        }
+        
+        .gallerySlide__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnailCarousalWrapper {
+            height: 120px;
+            background-color: #333;
+            display: flex;
+            padding: 10px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thumbnailSlide {
+            flex: 0 0 auto;
+            width: 210px;
+            height: 100px;
+            margin: 0 5px;
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+        
+        .thumbnailSlide.active {
+            border-color: #00a8e8;
+        }
+        
+        .thumbnailSlide__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .csModalOut {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .csModalOut::before {
+            content: "×";
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Image Display -->
+    <div class="main-gallery-container">
+        <img src="/images/Rohan-Ekam-Master-Plan-scaled.jpg" alt="Property View" class="main-gallery-image" id="mainGalleryImage">
+        <div class="close-btn" id="mainCloseBtn">×</div>
+        <div class="gallery-nav gallery-prev" id="mainGalleryPrev">&#10094;</div>
+        <div class="gallery-nav gallery-next" id="mainGalleryNext">&#10095;</div>
+    </div>
+    
+    <!-- Thumbnail Navigation -->
+    <div class="thumbnail-container">
+        <div class="thumbnail-slider" id="thumbnailSlider">
+            <div class="thumbnail active" data-index="0">
+                <img src="images/Rohan-Harita-3840X1694-px-01-scaled.jpg" alt="Thumbnail 1">
+            </div>
+            <div class="thumbnail" data-index="1">
+                <img src="images/Rohan-Harita-3840X1694-px-02-scaled.jpg"" alt="Thumbnail 2">
+            </div>
+            <div class="thumbnail" data-index="2">
+                <img src="images/Rohan-Harita-3840X1694-px-03-scaled.jpg"" alt="Thumbnail 3">
+            </div>
+            <div class="thumbnail" data-index="3">
+                <img src="images/Rohan-Harita-3840X1694-px-04-scaled.jpg"" alt="Thumbnail 4">
+            </div>
+            <div class="thumbnail" data-index="4">
+                <img src="images/Rohan-Harita-3840X1694-px-05-scaled.jpg"" alt="Thumbnail 5">
+            </div>
+            <div class="thumbnail" data-index="5">
+                <img src="images/Rohan-Harita-3840X1694-px-06-scaled.jpg"" alt="Thumbnail 6">
+            </div>
+        </div>
+        <div class="thumbnail-nav thumbnail-prev" id="thumbnailPrev">&#10094;</div>
+        <div class="thumbnail-nav thumbnail-next" id="thumbnailNext">&#10095;</div>
+    </div>
+    
+    <!-- Full Modal Image Gallery -->
+    <div class="csModal csModal--lg transparentArea imageGallery insideModal" id="imageGalleryModal">
+        <span class="csModalOut" id="modalCloseBtn"></span>
+        <div class="csModal__content">
+            <div class="csModal__body">
+                <div class="galleryCarousalWrapper">
+                    <div class="gallerySlide active">
+                        <img src="images/Rohan-Harita-3840X1694-px-01-scaled.jpg" class="gallerySlide__image" alt="Property View 1">
+                    </div>
+                    <div class="gallerySlide">
+                        <img src="images/Rohan-Harita-3840X1694-px-02-scaled.jpg" class="gallerySlide__image" alt="Property View 2">
+                    </div>
+                    <div class="gallerySlide">
+                        <img src="images/Rohan-Harita-3840X1694-px-03-scaled.jpg" class="gallerySlide__image" alt="Property View 3">
+                    </div>
+                    <div class="gallerySlide">
+                        <img src="images/Rohan-Harita-3840X1694-px-04-scaled.jpg" class="gallerySlide__image" alt="Property View 4">
+                    </div>
+                    <div class="gallerySlide">
+                        <img src="images/Rohan-Harita-3840X1694-px-05-scaled.jpg" class="gallerySlide__image" alt="Property View 5">
+                    </div>
+                    <div class="gallerySlide">
+                        <img src="images/Rohan-Harita-3840X1694-px-06-scaled.jpg" class="gallerySlide__image" alt="Property View 6">
+                    </div>
+                    
+                    <div class="gallery-nav gallery-prev" id="modalGalleryPrev">&#10094;</div>
+                    <div class="gallery-nav gallery-next" id="modalGalleryNext">&#10095;</div>
+                </div>
+
+                <div class="thumbnailCarousalWrapper">
+                    <div class="thumbnailSlide active" slideIndex="1">
+                        <img src="/api/placeholder/400/240" class="thumbnailSlide__image" alt="Thumbnail 1">
+                    </div>
+                    <div class="thumbnailSlide" slideIndex="2">
+                        <img src="/api/placeholder/400/240" class="thumbnailSlide__image" alt="Thumbnail 2">
+                    </div>
+                    <div class="thumbnailSlide" slideIndex="3">
+                        <img src="/api/placeholder/400/240" class="thumbnailSlide__image" alt="Thumbnail 3">
+                    </div>
+                    <div class="thumbnailSlide" slideIndex="4">
+                        <img src="/api/placeholder/400/240" class="thumbnailSlide__image" alt="Thumbnail 4">
+                    </div>
+                    <div class="thumbnailSlide" slideIndex="5">
+                        <img src="/api/placeholder/400/240" class="thumbnailSlide__image" alt="Thumbnail 5">
+                    </div>
+                    <div class="thumbnailSlide" slideIndex="6">
+                        <img src="/api/placeholder/400/240" class="thumbnailSlide__image" alt="Thumbnail 6">
+                    </div>
+                    
+                    <div class="thumbnail-nav thumbnail-prev" id="modalThumbnailPrev">&#10094;</div>
+                    <div class="thumbnail-nav thumbnail-next" id="modalThumbnailNext">&#10095;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Image data - replace with your actual images
+        const galleryImages = [
+            "images/Rohan-Harita-3840X1694-px-01-scaled.jpg",
+            "images/Rohan-Harita-3840X1694-px-02-scaled.jpg",
+            "images/Rohan-Harita-3840X1694-px-03-scaled.jpg",
+            "images/Rohan-Harita-3840X1694-px-04-scaled.jpg",
+            "images/Rohan-Harita-3840X1694-px-05-scaled.jpg",
+            "images/Rohan-Harita-3840X1694-px-06-scaled.jpg"
+        ];
+        
+        // Current image index
+        let currentIndex = 0;
+        
+        // Main gallery elements
+        const mainImage = document.getElementById('mainGalleryImage');
+        const mainPrev = document.getElementById('mainGalleryPrev');
+        const mainNext = document.getElementById('mainGalleryNext');
+        const mainCloseBtn = document.getElementById('mainCloseBtn');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const thumbnailSlider = document.getElementById('thumbnailSlider');
+        const thumbnailPrev = document.getElementById('thumbnailPrev');
+        const thumbnailNext = document.getElementById('thumbnailNext');
+        
+        // Modal gallery elements
+        const imageModal = document.getElementById('imageGalleryModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalSlides = document.querySelectorAll('.gallerySlide');
+        const modalThumbnails = document.querySelectorAll('.thumbnailSlide');
+        const modalPrev = document.getElementById('modalGalleryPrev');
+        const modalNext = document.getElementById('modalGalleryNext');
+        const modalThumbnailPrev = document.getElementById('modalThumbnailPrev');
+        const modalThumbnailNext = document.getElementById('modalThumbnailNext');
+        
+        // Functions for main gallery
+        function showImage(index) {
+            currentIndex = index;
+            mainImage.src = galleryImages[index];
+            
+            // Update active thumbnail
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+            
+            // Scroll thumbnail into view
+            const activeThumb = thumbnailSlider.querySelector('.thumbnail.active');
+            if (activeThumb) {
+                thumbnailSlider.scrollLeft = activeThumb.offsetLeft - thumbnailSlider.offsetWidth / 2 + activeThumb.offsetWidth / 2;
+            }
+        }
+        
+        function nextImage() {
+            let nextIndex = currentIndex + 1;
+            if (nextIndex >= galleryImages.length) {
+                nextIndex = 0;
+            }
+            showImage(nextIndex);
+        }
+        
+        function prevImage() {
+            let prevIndex = currentIndex - 1;
+            if (prevIndex < 0) {
+                prevIndex = galleryImages.length - 1;
+            }
+            showImage(prevIndex);
+        }
+        
+        // Functions for modal gallery
+        function showModalImage(index) {
+            modalSlides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            
+            modalThumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+        
+        function nextModalImage() {
+            let activeIndex = Array.from(modalSlides).findIndex(slide => slide.classList.contains('active'));
+            let nextIndex = activeIndex + 1;
+            if (nextIndex >= modalSlides.length) {
+                nextIndex = 0;
+            }
+            showModalImage(nextIndex);
+        }
+        
+        function prevModalImage() {
+            let activeIndex = Array.from(modalSlides).findIndex(slide => slide.classList.contains('active'));
+            let prevIndex = activeIndex - 1;
+            if (prevIndex < 0) {
+                prevIndex = modalSlides.length - 1;
+            }
+            showModalImage(prevIndex);
+        }
+        
+        function openModal() {
+            imageModal.classList.add('active');
+            showModalImage(currentIndex);
+        }
+        
+        function closeModal() {
+            imageModal.classList.remove('active');
+        }
+        
+        // Event listeners for main gallery
+        mainNext.addEventListener('click', nextImage);
+        mainPrev.addEventListener('click', prevImage);
+        mainCloseBtn.addEventListener('click', openModal);
+        
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                showImage(index);
+            });
+        });
+        
+        thumbnailNext.addEventListener('click', () => {
+            thumbnailSlider.scrollLeft += 300;
+        });
+        
+        thumbnailPrev.addEventListener('click', () => {
+            thumbnailSlider.scrollLeft -= 300;
+        });
+        
+        // Event listeners for modal gallery
+        modalNext.addEventListener('click', nextModalImage);
+        modalPrev.addEventListener('click', prevModalImage);
+        modalCloseBtn.addEventListener('click', closeModal);
+        
+        modalThumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                showModalImage(index);
+            });
+        });
+        
+        modalThumbnailNext.addEventListener('click', () => {
+            const thumbnailWrapper = document.querySelector('.thumbnailCarousalWrapper');
+            const scrollAmount = thumbnailWrapper.offsetWidth / 2;
+            thumbnailWrapper.scrollLeft += scrollAmount;
+        });
+        
+        modalThumbnailPrev.addEventListener('click', () => {
+            const thumbnailWrapper = document.querySelector('.thumbnailCarousalWrapper');
+            const scrollAmount = thumbnailWrapper.offsetWidth / 2;
+            thumbnailWrapper.scrollLeft -= scrollAmount;
+        });
+        
+        // Initialize
+        showImage(0);
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rohan - Builders </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <script>
+        function sendData() {
+            // Get values from input fields
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const message = document.getElementById("message").value;
+
+            // Prepare request data
+            const requestData = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message
+            };
+
+            // API endpoint (Replace with actual API URL)
+            const apiUrl = "https://p7hjkeqa74.execute-api.eu-north-1.amazonaws.com/prod/contactform";
+
+            // Fetch API with POST request
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestData)  // Convert object to JSON
+            })
+                .then(response => response.json())  // Convert response to JSON
+                .then(data => {
+                    document.getElementById("response").innerText = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <!-- <div class="hamburger">
+            <img src="images/hum.png" alt="Menu">
+        </div> -->
+    <!-- <div class="right">
+        <img src="images/Rohan-Builders-Logo@2x.png" alt="logo" style="height: 60px; width:600px;">
+    </div> 
+    </nav> -->
+    <nav class="navigation">
+        <div class="logo-container">
+            <img src="images/Rohan-Builders-Logo@2x.png" alt="Rohan Builders Logo" class="logo-image">
+        </div>
+    </nav>
+    <section class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="images/observation-urban-building-business-steel.jpg" alt="Image 1">
+            </div>
+            <div class="slide"><img src="images/Harita-1.png" alt="Image 2"></div>
+            <div class="slide"><img src="images/Harita-4.png" alt="Image 3"></div>
+            <div class="slide"><img src="images/next2.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="images/next3.jpg" alt="Image 5"></div>
+            <div class="slide"><img src="images/next5.jpg" alt="Image 6"></div>
+            <div class="slide"><img src="images/next6.jpg" alt="Image 7"></div>
+            <div class="slide"><img src="images/next8.jpg" alt="Image 8"></div>
+            <div class="slide"><img src="images/next7.jpg" alt="Image 9"></div>
+            <div class="slide"><img src="images/next9.jpg" alt="Image 11"></div>
+            <div class="slide"><img src="images/next4.jpg" alt="Image 12"></div> 
+        </div>
+        <div class="sam">
+            <div class="centered"><b>HARITA</b></div>
+        </div>
+    </section>
+
+    <div class="containerr">
+        <div class="left-section">
+            <h1 class="titlee">HARITA</h1>
+            <h2 class="subtitle">TATHAWADE</h2>
+        </div>
+        <div class="right-section">
+            <p>Homes surrounded by trees A whiff of fresh breeze. The sound of the whistling trees, the singing birds and sight of the golden sun. We've created a space that is a perfectly orchestrated symphony. A space that you can call your own, a green sanctuary that you can call your home - Rohan Harita. It is a luxurious expanse of residential space nestled comfortably amidst lush greenery and a variety of flora and fauna. Away from the urban jungle. Away from the crowd. Where whiffs of unpolluted, fresh air makes every breath refreshing. Where every walk feels like a sensorial surprise. Imagine a home that doubles up as a retreat – that is Rohan Harita for you. Holistic living A lush green cover. An unobstructed skyline. And the luxury of space. Homes nestled in an experiential landscape that is a holistic treat for the senses. Rohan Harita is all of this and more.</p>
+            
+            <div class="info-section">
+                <img src="images/24914.png" alt="Building Icon" class="icon">
+                <div class="info-text">
+                 <p>1, 2, 3 & 4 BHK Homes</p>
+                    <p>RERA Regn. No. : P52100052972, P5210007953.</p>
+                    <p> Launched in 2023</p>
+                    <p>https://maharera.mahaonline.gov.in</p> 
+                   
+                </div>
+            </div>
+            
+            <div class="qr-codes">
+                <div class="qr-code">
+                    <img src="images/QR-CODE-ROHAN-HARITA-PHASE-1-P52100052972-e1731322621228.png" alt="QR Code 1">
+                </div>
+                <div class="qr-code">
+                    <img src="images/ROHAN-HARITA-PHASE-2-P52100079539.png" alt="QR Code 2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="whatsapp-icon">
+        <a href="https://wa.me/9223003740" target="_blank">
+            <img src="images/whatsapp.png" alt="WhatsApp">
+        </a>
+    </div>
+    </div>
+
+    <div class="image-grid">
+        <div class="grid-item" style="background-image: url('images/Architects-note-tile.png');">
+            <div class="title">ARCHITECT'S NOTE</div>
+            <div class="arrow" onclick="openPage('architect-note.html')">▶</div>
+        </div>
+
+        <div class="grid-item" style="background-image: url('images/Location-tile.png');">
+            <div class="title">LOCATION</div>
+            <div class="arrow" onclick="openPage('location.html')">▶</div>
+        </div>
+
+        <div class="grid-item" style="background-image: url('images/Gallery-tile-1.png');">
+            <div class="title">GALLERY</div>
+            <div class="arrow" onclick="openPage('gallery.html')">▶</div>
+        </div>
+
+        <div class="grid-item" style="background-image: url('images/Masterplan-tile.png');">
+            <div class="title">MASTER PLAN</div>
+            <div class="arrow" onclick="openPage('masterplan.html')">▶</div>
+        </div>
+
+        <div class="grid-item" style="background-image: url('images/Floor-plan-tile.png');">
+            <div class="title">FLOOR PLAN</div>
+            <div class="arrow" onclick="openPage('floorplan.html')">▶</div>
+        </div>
+
+        <div class="grid-item" style="background-image: url('images/Amenities-tile.png');">
+            <div class="title">AMENITIES</div>
+            <div class="arrow" onclick="openPage('amenities.html')">▶</div>
+        </div>
+
+        <div class="grid-item" style="background-image: url('images/Specifications-tile.png')">
+            <div class="title">SPECIFICATIONS</div>
+            <div class="arrow" onclick="openPage('specifications.html')">▶</div>
+        </div>
+    </div>
+
+    <div class="containerarm">
+        <div class="form-container">
+            <hr class="top-line">
+            <div class="heading-container">
+                <h2>INTERESTED?</h2>
+                <span class="question">Tell us how we can help!</span>
+            </div>
+            <p>Share your phone number or email, our sales representative will contact you.</p>
+
+            <form id="contactForm" class="contactForm">
+                <div class="input-row">
+                    <input type="text" id="name" placeholder="Name" required>
+                </div>
+                <div class="input-row">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-row">
+                    <input type="tel" id="phone" placeholder="Mobile" required>
+                </div>
+                <div class="input-row">
+                    <input type="text" id="message" placeholder="Message" required>
+                </div>
+                <div class="input-row">
+                    <button onclick="sendData()">SUBMIT</button>
+                </div>
+            </form>
+
+            <!-- <div class="brochure-container">
+                <h3>DETAILED BROCHURE</h3>
+                <button class="download-btn">DOWNLOAD</button>
+            </div> -->
+            <div class="brochure-container">
+                <h3>DETAILED BROCHURE</h3>
+                <a href="images/Rohan-Ekam-Brochure.pdf" class="download-btn">DOWNLOAD</a>
+                <!-- <button class="download-btn" onclick="downloadBrochure()">DOWNLOAD</button> -->
+                
+                <!-- <script>
+                function downloadBrochure() {
+                    window.open('/images/Rohan-Ekam-Brochure.pdf', '_blank');
+                }
+                </script> -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <section class="home-guide-section">
+        <div class="guide-content">
+            <h2>HOME BUYING GUIDE</h2>
+            <p>
+                Buying a home is a big investment and requires careful consideration.
+                Rohan's Home Buying Guide can help simplify the process, offering expert
+                advice on topics like RERA rules, tax implications, finance planning,
+                design selection, and sustainability. Visit
+                <a href="https://www.knowhome.in" target="_blank">www.knowhome.in</a>
+                to learn more and make an informed decision.
+            </p>
+        </div>
+        <div class="guide-image">
+            <img src="images/Home-Buying-Guide-tile.png" alt="Home Buying Guide">
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <a class="contact-btn" href="#contactForm">CONTACT US</a>
+            <div class="social-links">
+                <!-- <a href="privacy.html" target="_blank">PRIVACY & POLICY</a> -->
+                <a href="privacy.html" target="_blank" style="color: black; font-weight: bold; font-size: 20px; text-decoration: underline; height: 50px; display: inline-flex; align-items: center;">PRIVACY & POLICY</a>
+
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="images/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com" target="_blank">
+                    <img src="images/youtube (1).png" alt="YouTube">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="images/linkedin.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+
+</html>

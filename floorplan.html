@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="containeramam">
+        <div class="button-containeram">
+            <button class="image-buttonam" data-image="displayedam-image-1">2 BHK A</button>
+            <button class="image-buttonam" data-image="displayedam-image-2">2 BHK C</button>
+            <button class="image-buttonam" data-image="displayedam-image-3">2 BHK PB</button>
+            <button class="image-buttonam" data-image="displayedam-image-4">3 BHK CA</button>
+            <button class="image-buttonam" data-image="displayedam-image-5">3 BHK PB1</button>
+            <button class="image-buttonam" data-image="displayedam-image-6">3 BHK PB2</button>
+            <button class="image-buttonam" data-image="displayedam-image-7">4 BHK</button>
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-1" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-1-BHK-A.png" alt="Displayed Image">
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-2" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-2-BHK-C.png" alt="Displayed Image">
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-3" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-2-BHK-PB.png" alt="Displayed Image">
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-4" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-3-BHK-CA.png" alt="Displayed Image">
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-5" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-3-BHK-PB1.png" alt="Displayed Image">
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-6" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-3-BHK-PB2.png" alt="Displayed Image">
+        </div>
+        <div class="image-displayam">
+            <img id="displayedam-image-7" src="images/Harita-Unit-Plan-1142x1142-px-2023-11-10-4-BHK.png" alt="Displayed Image">
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all buttons with the class 'image-buttonam'
+        const buttons = document.querySelectorAll('.image-buttonam');
+        
+        // Get all image display containers
+        const imageDisplays = document.querySelectorAll('.image-displayam');
+        
+        // Function to hide all images first
+        function hideAllImages() {
+            imageDisplays.forEach(display => {
+                display.style.display = 'none';
+            });
+        }
+        
+        // Hide all images initially (no default image showing)
+        hideAllImages();
+        
+        // No initial button highlighting if you don't want anything selected by default
+        
+        // Add click event listeners to each button
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove 'active' class from all buttons
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add 'active' class to the clicked button
+                this.classList.add('active');
+                
+                // Get the target image ID from the button's data attribute
+                const targetImageId = this.getAttribute('data-image');
+                
+                // Hide all images first
+                hideAllImages();
+                
+                // Find and show the target image
+                const targetImage = document.getElementById(targetImageId);
+                if (targetImage) {
+                    targetImage.parentElement.style.display = 'block';
+                } else {
+                    console.error('Image with ID ' + targetImageId + ' not found');
+                }
+            });
+        });
+    });
+   </script>
+</body>
+
+</html>

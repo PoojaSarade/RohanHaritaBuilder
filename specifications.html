@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Specifications</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+        }
+
+        /* Modal container */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        /* Close button */
+        .close-button {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 20px;
+            right: 50%;
+            transform: translateX(50%);
+            z-index: 1001;
+        }
+
+        .scroll-indicator svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Specifications container */
+        .specifications {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .specifications h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        hr {
+            width: 130px;
+            border: 1px solid #000;
+            margin-bottom: 40px;
+        }
+
+        /* Features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: 20px;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 120px;
+            height: 120px;
+            background-color: #f0e4e4;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon.flooring {
+            background-color: #e8f0e4;
+        }
+
+        .feature-icon.kitchen {
+            background-color: #e4eef0;
+        }
+
+        .feature-icon.utility {
+            background-color: #f0efdf;
+        }
+
+        .feature-icon img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .feature h2 {
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .feature ul {
+            list-style-type: disc;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .feature li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            font-size: 22px;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <!-- Close button (X) -->
+        <button class="close-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </div>
+
+        <div class="specifications">
+            <h1>SPECIFICATIONS</h1>
+            <hr>
+
+            <div class="features-grid">
+                <!-- Structure -->
+                <div class="feature">
+                    <div class="feature-icon">
+                        <img src="images/Structure-icon.png" alt="Structure Icon">
+                    </div>
+                    <h2>STRUCTURE</h2>
+                    <ul>
+                        <li>RCC structure</li>
+                    </ul>
+                </div>
+
+                <!-- Flooring -->
+                <div class="feature">
+                    <div class="feature-icon flooring">
+                        <img src="images/Flooring-icon.png" alt="Flooring Icon">
+                    </div>
+                    <h2>FLOORING</h2>
+                    <ul>
+                        <li>Vitrified tiles for living, kitchen, dining, bedroom</li>
+                        <li>Ceramic tiles for toilets, balconies/terraces, and utilities.</li>
+                    </ul>
+                </div>
+
+                <!-- Kitchen -->
+                <div class="feature">
+                    <div class="feature-icon kitchen">
+                        <img src="images/Kitchen-icon.png" alt="Kitchen Icon">
+                    </div>
+                    <h2>KITCHEN</h2>
+                    <ul>
+                        <li>Granite platform with SS sink</li>
+                        <li>Glazed / Ceramic tile dado up to 2 ft. height above platform</li>
+                    </ul>
+                </div>
+
+                <!-- Utility -->
+                <div class="feature">
+                    <div class="feature-icon utility">
+                        <img src="images/utility.png" alt="Utility Icon">
+                    </div>
+                    <h2>UTILITY</h2>
+                    <ul>
+                        <li>Ceramic tiles for floor and dado up to parapet height</li>
+                        <li>Inlet/outlet provision for washing</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon kitchen">
+                        <img src="images/Toilets-icon.png" alt="Kitchen Icon">
+                    </div>
+                    <h2>TOILETS</h2>
+                    <ul>
+                        <li>Ceramic flooring and dado up to lintel level</li>
+                        <li>Repute make sanitary wares and CP fittings</li>
+                        <li>Concealed plumbing</li>
+                        <li>Slung piping with false ceiling in toilets</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon kitchen">
+                        <img src="images/electrical.png" alt="Kitchen Icon">
+                    </div>
+                    <h2>ELECTRICAL & AIR CONDITIONING</h2>
+                    <ul>
+                        <li>Concealed fire-resistant high-quality copper wiring</li>
+                        <li>Ample light points with modular switches</li>
+                        <li>Provision of exhaust point in kitchen and toilets</li>
+                        <li>TV and AC point in all bedrooms and living room</li>
+                        <li>Earth leakage circuit breaker</li>
+                        <li>Video Door Phone facility for each apartment</li>
+                        <li>DG back up for 1 light point and fan point</li>
+                        <li>Adequate plugs in the kitchen for appliances</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon kitchen">
+                        <img src="images/doorsandwindows.png" alt="Kitchen Icon">
+                    </div>
+                    <h2>DOORS AND WINDOWS</h2>
+                    <ul>
+                        <li>Laminated main door and elegant internal flush doors</li>
+                            <li> Premium quality fixtures and fittings</li>
+                                <li> Powder-coated aluminum windows/doors with mosquito mesh</li>
+                                    <li> Powder-coated aluminum openable door for utility</li>
+                        <li>Glazed / Ceramic tile dado up to 2 ft. height above platform</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon kitchen">
+                        <img src="images/internalpaint.png" alt="Kitchen Icon">
+                    </div>
+                    <h2>INTERNAL PAINT</h2>
+                    <ul>
+                        <li>Internal walls with acrylic emulsion paint</li>
+             
+                    </ul>
+                </div>
+          
+            </div>
+        </div>
+    </div>
+</body>
+</html>
